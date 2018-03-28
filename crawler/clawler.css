@@ -1,0 +1,71 @@
+#calosc
+{ 
+
+	border-top: 1px solid #012345;
+  	border-top-right-radius: 80%;
+  	border-bottom: 1px solid #012345;
+  	border-bottom-left-radius: 80%;
+  	padding-top: 20px;
+  	background-color: #B4D3F0;
+}
+
+
+body
+{
+	background-color: #C0D8F0;
+	font-family: serif; Georgia;
+}
+form
+{
+	text-align: center;
+	padding-left: 10px;
+}
+
+h1
+{
+text-align: center;
+color: #012345;
+padding: 10px;
+padding-top: 90px;
+text-shadow: 1px 0px 3px;
+font-size: 82px;
+}
+
+.Search
+{
+padding-bottom: 5px;
+padding-top: 2px;
+padding-left: 4px ;
+padding-right: 4px ;
+width: 18% ;
+}
+
+.Crawl
+{
+background-color:#B2C1D1;
+font-family:Georgia;
+padding: 5px;
+padding-right: 12px;
+padding-left: 13px;
+width: 10% ;
+}
+
+/*.Crawl:hover
+ {
+    border: 1px grey; /kolor obramowania pod wyszukiwarką 
+    font-weight: bold;
+    background-color: #B2C1D1;
+    color: black;
+	width: 10% ;
+	padding: 5px;
+	padding-right: 12px;
+	padding-left: 13px;}  */
+
+.final-link{
+	padding: 10px;
+	margin: 10px;
+	background-color: #A6C6E6;
+	border: 1px #012345 solid;
+	display: inline-block;
+}
+
