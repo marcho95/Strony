@@ -23,7 +23,7 @@
     <div class="result">
         <?php
             foreach ($pageCrawlerResult as $index=>$href) {
-                echo $result[$index] = '<a class="crawler-single-result" href="' . $href . '">' . $href . '</a>';
+                echo $result[$index] = '<a class="crawler" href="' . $href . '">' . $href . '</a>';
             }
         ?>
     </div>
