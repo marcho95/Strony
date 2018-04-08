@@ -35,11 +35,11 @@
     
     const CRAWLER_DEPTH = 2;
 
-    $servername = "localhost";
-    $username = "root";
-    $password = ""; 
-    $dbname = "crawler";
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $nazwaserwara = "localhost";
+    $nazwauzytkownika = "root";
+    $haslo = ""; 
+    $dbnazwa = "crawler";
+    $conn = new mysqli($nazwaserwara, $nazwauzytkownika, $haslo, $dbnazwa);
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     } else {
@@ -54,19 +54,10 @@
         $seen[$url] = true;
         $dom = new DOMDocument('1.0');
         @$dom->loadHTMLFile($url);
-        $anchors = $dom->getElementsByTagName('a');
-      
-        foreach ($anchors as $element) {
-        
-            $finalLink = explode("#", $element->getAttribute('href'));
-            $link = $finalLink[0];
-            $adres = substr($link, 0, 7);
-            $adresS = substr($link, 0, 8);
-            $protocol = 'http://';
-            $protocolS = 'https://';
-            if($adres != $protocol && $adresS != $protocolS){
-                $link = $url.$link;
-            }
+         $new_document=new DOMDocument; //Wczytywanie dokumentu, 
+         $new_document->loadHTMLFile($url); //pobieranie pliku z adresu
+         $new_links=$new_document->getElementsByTagName('a');
+         foreach ($new_links as $link )
             string_push($result, $link);
         }
         $result = string_unique($result);
@@ -82,7 +73,7 @@
     }
     if(isset($url)) {
         if (filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
-            echo 'Not a valid html!!!';
+            echo 'Not a valid html!';
         } else {
             $pageCrawlerResult = crawlPage($url, CRAWLER_DEPTH);
             $pageContantResult = getPageContent($url);
