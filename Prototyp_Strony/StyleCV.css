@@ -1,0 +1,326 @@
+body{
+
+	background-color:#ebebeb;
+  	width: 100%;
+  	height: 100%;
+}
+.menu{
+	margin-top:-8px ;
+ 	margin-right:-7px ;
+ 	margin-left:-7px;
+ 	padding: 13px;
+ 	padding-top: 16px;
+ 	padding-right: 40px; 
+	background-color: #ffffff;
+	border-bottom: 0.5px solid #960101;
+}
+.about_me{
+   	font-size: xx-small;
+	margin-left: 4.5px;
+	padding: 13px;
+	padding-top: 16px;
+	padding-right: 3px;
+	padding-left:3px; 
+	padding-bottom: 31px;
+	background-color:#960101 ;
+	text-decoration: none;
+ 	color: #fff7f0;
+}
+.home{
+	font-size: xx-small;
+	margin-left: 4.5px;
+	padding: 13px;
+	padding-top: 16px;
+	padding-right: 3px;
+	padding-left:3px; 
+	padding-bottom: 31px;
+	background-color:#960101 ;
+	text-decoration: none;
+ 	color: #fff7f0;
+}
+.about_me:hover{
+	font-size: xx-small;
+	margin-left: 4.5px;
+	padding: 13px;
+	padding-top: 16px;
+	padding-right: 3px;
+	padding-left:3px; 
+	padding-bottom: 31px;
+	background-color:#960101 ;
+	text-decoration:underline;
+ 	color: #fff7f0;
+}
+.home:hover{
+	font-size: xx-small;
+	margin-left: 4.5px;
+	padding: 13px;
+	padding-top: 16px;
+	padding-right: 3px;
+	padding-left:3px; 
+	padding-bottom: 31px;
+	background-color:#960101 ;
+	text-decoration:underline;
+ 	color: #fff7f0;
+}
+.CV{
+	margin-left: 464px;
+	color: #ebebeb;
+}
+.contact{
+	font-size: xx-small;
+	color:black;
+	margin-left:10.5px;
+	padding:13px;
+	padding-top:16px;
+	padding-right:3px;
+	padding-left:3px; 
+	padding-bottom:31px;
+	text-decoration: none;
+}
+.contact:hover{
+	font-size: xx-small;
+	color:black;
+	margin-left:10.5px;
+	padding:13px;
+	padding-top:16px;
+	padding-right:3px;
+	padding-left:3px; 
+	padding-bottom:31px;
+	text-decoration: underline;
+}
+.my_photo{
+	/*position: relative; right: 5.324%; top:23px;*/
+	margin-top: 19px;
+	margin-left:32.3px;
+	border-bottom: 1.5px solid #960101;
+	border-top: 2.9px solid #960101;
+	border-left: 1.5px solid #960101;
+	border-right: 1.5px solid #960101;
+}
+.m_chowaniec{
+	position:relative;right: 0.1%; top:-109.79px;
+	margin-left:1px;
+}
+.m_{ /*Grafika ta co wyżej ale wymaga innego ułożenia*/
+	position:relative;right: 0.1%; top:1.8px;
+	margin-left:141px;
+}
+.name{ 
+	position: relative; left: 10%; top:26.8px;
+	margin-top: -200px;
+	margin-left:5px;
+	font-family: mixa;
+}
+.data{
+	padding-top: 40px; /* Coś zyebałam, nie mogę dać tego ustrojstwa niżej -Naprawione, przesadzilam z nazwami klas, zapamiętać na przyszłość :) Przynajmniej JS z API działa */
+	text-decoration: none;
+ 	color: black;
+}
+.data_2{
+	text-decoration: none;
+ 	color: black;
+
+}
+.data_3{
+	text-decoration: none;
+ 	color: black;
+}
+.stopka
+{
+  	position: absolute;
+  	right: 0;
+  	bottom: 0;
+  	left: 0;
+  	padding: 2;
+  	padding-left: 17px;
+  	padding-top:3px; 
+  	padding-bottom:3px;
+  	background-color: #efefef;
+  	text-align: left;
+  	background-color: white;
+  	font-size: xx-small;
+  	border-top: 0.5px solid #960101;
+}
+/*------------------------MAPA---------------------------------------*/
+#googleMap
+{
+	margin-top: -491px;
+	margin-left:725px;
+	border-bottom: 1.5px solid #960101;
+	border-top: 1.5px solid #960101;
+	border-left: 1.5px solid #960101;
+	border-right: 1.5px solid #960101;
+}
+/*-------------------------------------------------------------------*/
+svg {
+	width: 80%;
+	height: 70%;
+	margin-left:-180px ;
+}
+path.slice{
+	stroke-width:2px;
+}
+polyline{
+	opacity: .3;
+	stroke: black;
+	stroke-width: 2px;
+	fill: none;
+}
+.randomize{
+	margin-left: 508.4px;
+	margin-top: 10px;
+	background-color:#960101;
+	color:#ebebeb;
+}
+.randomize:hover{
+
+}
+
+/*-------------------------------------------------------------------- Formularz  */
+* {
+    box-sizing: border-box;
+}
+
+.form {
+    margin:3rem auto;
+    font-family:sans-serif;
+    max-width:40rem;
+}
+.form .form-row {
+    margin-bottom:1rem;
+}
+.form .form-row:last-child {
+    margin-bottom: 0;
+}
+.form input[type=text],
+.form input[type=email],
+.form textarea,
+.form .checkbox-cnt .state {
+    box-shadow:inset 0 1px 5px rgba(0,0,0,0.07);
+}
+.form input[type=text],
+.form input[type=email],
+.form textarea {
+    border-radius:0.2rem;
+    font-family:sans-serif;
+    padding:0.8rem;
+    border:1px solid #aaa;
+    display: block;
+    width:50%;
+    color:#666;
+}
+.form input[type=text]:focus,
+.form input[type=email]:focus,
+.form textarea:focus {
+    border-color:#9DC9F5;
+    box-shadow:inset 0 0 0 1px ##960101, inset 0 1px 5px rgba(0,0,0,0.07);
+    outline:none;
+}
+.form textarea {
+    height:10rem;
+}
+.form label {
+    font-weight:bold;
+    display: block;
+    font-size:0.9rem;
+    margin-bottom:0.5rem;
+}
+.form .submit-btn {
+    font-family: sans-serif;
+    padding:0.2rem 2rem;
+    background: #960101;
+    border:0;
+    border-radius:0.2rem;
+    color:#fff;
+    font-size:x-smaller;
+    font-weight: bold;
+    transition: 0.3s background-color;
+    margin-top: 15px;
+}
+
+/* checkbox */
+.form .submit-btn:hover {
+    background: black; /* Kolor zielony zmienić na inny!!!!!!! */
+}
+.form .checkbox-cnt {
+    padding-left:3rem;
+    position: relative;
+    font-weight: normal;
+    font-size:0.85rem;
+    line-height: 0.1rem;
+    color:#444;
+    cursor: pointer;
+}
+.form .checkbox-cnt .state {
+    width:1rem;
+    height: 1rem;
+    display: block;
+    position: absolute;
+    left:0;
+    top:0;
+    border:1px solid #aaa;
+    border-radius:0.2rem;
+}
+.form .checkbox-cnt .state:before {
+    width:1rem;
+    height: 1rem;
+    border-radius:0.2rem;
+    background: #960101;
+    display: block;
+    position: absolute;
+    left:40%;
+    top:50%;
+    content:'';
+    transform:translate(-50%, -50%) scale(1);
+    opacity:0;
+}
+.form .checkbox-cnt input:checked ~ .state:before {
+    animation: checkboxShowAnim 0.5s 1;
+    opacity: 1;
+}
+.form .checkbox-cnt input {
+    position:absolute;
+    top:0; left:0;
+    width:2rem;
+    height: 2rem;
+    z-index: 2;
+    cursor:pointer;
+    padding:0;
+    margin:0;
+    opacity: 0;
+}
+@keyframes checkboxShowAnim {
+    0%  { border-radius:50%; transform:translate(-50%, -50%) scale(0.2); }
+    50% { transform:translate(-50%, -50%) scale(1.2); }
+    100% { transform:translate(-50%, -50%) scale(1); }
+}
+
+/* walidacja */
+.form input[type=text].error,
+.form input[type=email].error,
+.form textarea.error,
+.form .checkbox-cnt input.error ~ .state {
+    border-color:##E01546;
+}
+.field-error {
+    color:##E01546;
+    padding:0.5rem 0;
+    font-size:0.8rem;
+}
+#field-message{  /* Wysokość wyślij wiadomość   */
+	height: 20%;
+}
+#field-email{	/* Wysokość podaj adres email   */
+	height:3%;
+}
+#field-name{	/* Wysokość podaj imie nazwisko   */
+	height:3%;
+}
+
+
+@media screen and (max-width:500px) {
+    .form .submit-btn {
+        display: block;
+        width: 100%;
+    }
+}

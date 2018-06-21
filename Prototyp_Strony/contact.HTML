@@ -1,0 +1,221 @@
+<html>
+	<html lang="pl">
+	<head>
+		<title>CV Maria Chowaniec</title>
+		<meta charset="utf-8">
+		<meta http-equiv="Expires" content="0" />
+		<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+		<meta http-equiv="Cache-Control" content="post-check=0, pre-check=0" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta name="Author" content="marcho" />
+    	<link rel="stylesheet" type="text/css" href="StyleCV.css">	
+	
+    	
+	</head>
+
+	<body>
+		<main>
+			<div class="menu">
+				<a class="about_me" href="about_me.HTML">O mnie </a>
+				<a class="contact"  href="Cialo.HTML">Strona główna </a> 
+				<a class="CV" >Curriculum vitae </a>
+			</div>
+
+		<!--
+		 <div class="Data">
+				<a class="Data_1" target="_blank"> Adres: Piłsudskiego 6 Myślenice małopolska </a><br/>
+				<a class="Data_2" href="mailto:95marcho@gmail.com"> e-mail: 95marcho@gmail.com </a><br/>
+				<a class="Data_3" href="tel:+48697645798"> Numer telefonu: 697645798 </a><br/>
+			</div> 
+			 -->
+
+ 
+		</main>	
+
+<form class="form" id="contactForm" method="post" novalidate action="/send-scripts.php">
+    <div class="form-row">
+        <label for="field-name" style="font-size: smaller"  >Imię Nazwisko*</label>
+        <input type="text" name="name" required id="field-name" data-error="Wypełnij to pole" pattern="[a-zA-ZąĄććęęłŁńŃóÓśŚżŻŹŹ ]+">
+    </div>
+    <div class="form-row">
+        <label for="field-email" style="font-size: smaller;">Email*</label>
+        <input type="email" name="email" required id="field-email" data-error="Wpisz poprawny email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
+    </div>
+    <div class="form-row">
+        <label for="field-message" style="font-size: smaller;">Wiadomość*</label>
+        <textarea name="message" required data-error="Musisz wypełnić pole" id="field-message" pattern=".+"></textarea>
+    </div>
+    <div class="form-row">
+        <label class="checkbox-cnt">
+            <input type="checkbox" data-error="Musisz wypełnić pole" name="regulation">
+            <i class="state" aria-hidden="true"></i>
+            <span style="font-size: xx-small;">ABC RODO.</span>
+        </label>
+    </div>
+    <div class="form-row">
+        <button type="submit" class="submit-btn">
+            Wyślij
+        </button>
+    </div>
+</form>
+ 
+      <div id="googleMap" style="width:29%;height:300px;"></div>
+
+<script>
+
+{
+    const form = document.querySelector('#contactForm');
+    const inputs = form.querySelectorAll('input[required], textarea[required], select[required]');
+
+    form.setAttribute('novalidate', true);
+
+    const displayFieldError = function(elem) {
+        const fieldRow = elem.closest('.form-row');
+        const fieldError = fieldRow.querySelector('.field-error');
+
+        //jeżeli komunikat z błędem pod polem nie istnieje...
+        if (fieldError === null) {
+            //pobieramy z pola tekst błędu
+            //i tworzymy pole
+            const errorText = elem.dataset.error;
+            const divError = document.createElement('div');
+            divError.classList.add('field-error');
+            divError.innerText = errorText;
+            fieldRow.appendChild(divError);
+        }
+    };
+
+    const hideFieldError = function(elem) {
+        const fieldRow = elem.closest('.form-row');
+        const fieldError = fieldRow.querySelector('.field-error');
+        //jeżeli pobrane pole istnieje - usuń je
+        if (fieldError !== null) {
+            fieldError.remove();
+        }
+    };
+
+    [...inputs].forEach(elem => {
+        elem.addEventListener('input', function() {
+            if (!this.checkValidity()) {
+                this.classList.add('error');
+            } else {
+                this.classList.remove('error');
+                hideFieldError(this);
+            }
+        });
+
+        if (elem.type === "checkbox") {
+            elem.addEventListener('click', function() {
+                const formRow = this.closest('.form-row');
+                if (this.checked) {
+                    this.classList.remove('error');
+                    hideFieldError(this);
+                } else {
+                    this.classList.add('error');
+                }
+            });
+        }
+    });
+
+    const checkFieldsErrors = function(elements) {
+        //ustawiamy zmienną na true. Następnie robimy pętlę po wszystkich polach
+        //jeżeli któreś z pól jest błędne, przełączamy zmienną na false.
+        let fieldsAreValid = true;
+
+        [...elements].forEach(elem => {
+            if (elem.checkValidity()) {
+                hideFieldError(elem);
+                elem.classList.remove('error');
+            } else {
+                displayFieldError(elem);
+                elem.classList.add('error');
+                fieldsAreValid = false;
+            }
+        });
+
+        return fieldsAreValid;
+    };
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        //jeżeli wszystkie pola są poprawne...
+        if (checkFieldsErrors(inputs)) {
+            const elements = form.querySelectorAll('input:not(:disabled), textarea:not(:disabled), select:not(:disabled)');
+
+            const dataToSend = new FormData();
+            [...elements].forEach(el => dataToSend.append(el.name, el.value));
+
+            const submit = form.querySelector('[type="submit"]');
+            submit.disabled = true;
+            submit.classList.add('element-is-busy');
+
+            const url = form.getAttribute('action');
+            const method = form.getAttribute('method');
+
+            fetch(url, {
+                method: method.toUpperCase(),
+                body: dataToSend
+            })
+            .then(ret => ret.json())
+            .then(ret => {
+                submit.disabled = false;
+                submit.classList.remove('element-is-busy');
+
+                if (ret.errors) {
+                    ret.errors.map(function(el) {
+                        return '[name="'+el+'"]'
+                    });
+
+                    const badFields = form.querySelectorAll(ret.errors.join(','));
+                    checkFieldsErrors(badFields);
+                } else {
+                    if (ret.status === 'ok') {
+                        const div = document.createElement('div');
+                        div.classList.add('form-send-success');
+                        div.innerText = 'Wysłanie wiadomości się nie powiodło';
+
+                        form.parentElement.insertBefore(div, form);
+                        div.innerHTML = '<strong>Wiadomość została wysłana</strong><span>Dziękujemy za kontakt. Postaramy się odpowiedzieć jak najszybciej</span>';
+                        form.remove();
+                    }
+
+                    if (ret.status === 'error') {
+                        //jeżeli istnieje komunikat o błędzie wysyłki
+                        //np. generowany przy poprzednim wysyłaniu formularza
+                        //usuwamy go, by nie duplikować tych komunikatów
+                        if (document.querySelector('.send-error')) {
+                            document.querySelector('.send-error').remove();
+                        }
+                        const div = document.createElement('div');
+                        div.classList.add('send-error');
+                        div.innerText = 'Wysłanie wiadomości się nie powiodło';
+                        submit.parentElement.appendChild(div);
+                    }
+                }
+            }).catch(_ => {
+                submit.disabled = false;
+                submit.classList.remove('element-is-busy');
+            });
+        }
+    });
+}
+
+
+
+function myMap() {
+var mapProp= {
+    center:new google.maps.LatLng(49.8338300,19.9383000),
+    zoom:15,
+};
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr2coOK2gDGRn8Jgzdzkk1sckCI1_QtCg&callback=myMap"></script>
+
+
+
+	</body>
+
+</html>
